@@ -6,13 +6,24 @@ Official CLI tool for [py-netatmo-truetemp](https://github.com/py-netatmo-unoffi
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## ⚠️ Disclaimer
+
+This is an **unofficial** CLI tool for Netatmo thermostats. It is:
+- **Not affiliated with or endorsed by Netatmo**
+- **Not officially supported** - use at your own risk
+- **For personal/educational use** - production use not recommended
+- **Subject to archival** - may become unmaintained if I lose access to Netatmo hardware
+
+**Use responsibly**: This tool controls heating equipment. Test thoroughly before relying on it.
+
 ## Features
 
-- 🏠 List all rooms with thermostats
-- 🌡️ Set calibrated temperatures for rooms
-- 🎨 Beautiful CLI with Rich formatting
-- ⚡ Fast and reliable with py-netatmo-truetemp library
-- 🔒 Secure environment variable configuration
+- **Accurate Temperature Control**: Uses TrueTemperature calibration system for precise setpoints
+- **Room-by-Room Management**: Control individual rooms by name or ID
+- **Beautiful Terminal Output**: Rich formatting with tables and styled panels
+- **Secure Configuration**: Environment variable-based credential management
+- **Cross-Platform**: Works on Linux, macOS, and Windows
+- **Robust Error Handling**: User-friendly error messages with actionable guidance
 
 ## Installation
 
@@ -77,6 +88,33 @@ netatmo-truetemp set-truetemperature --room-name "Living Room" --temperature 20.
 netatmo-truetemp set-truetemperature --room-id 1234567890 --temperature 19.0
 ```
 
+## Common Use Cases
+
+### List Available Rooms
+```bash
+netatmo-truetemp list-rooms
+```
+
+### Set Room Temperature
+```bash
+# By room name (case-insensitive)
+netatmo-truetemp set-truetemperature --room-name "Living Room" --temperature 21.0
+
+# By room ID (for automation scripts)
+netatmo-truetemp set-truetemperature --room-id "1234567890abcdef" --temperature 21.0
+```
+
+### Automation Example
+```bash
+#!/bin/bash
+# Adjust bedroom temperature based on time of day
+HOUR=$(date +%H)
+
+if [ $HOUR -ge 22 ]; then
+    netatmo-truetemp set-truetemperature --room-name "Bedroom" --temperature 18.0
+fi
+```
+
 ## Configuration
 
 ### Environment Variables
@@ -87,7 +125,19 @@ netatmo-truetemp set-truetemperature --room-id 1234567890 --temperature 19.0
 | `NETATMO_PASSWORD` | Yes | Your Netatmo account password |
 | `NETATMO_HOME_ID` | No | Home ID (auto-detected if omitted) |
 
-**Security Note:** Never commit credentials to version control. Use environment variables or a secure credential manager.
+## Security
+
+**Credential Management**:
+- Store credentials in environment variables (never commit to version control)
+- For CI/CD or automation, use your platform's secret management system
+
+**Authentication Cache**:
+The underlying library caches authentication tokens at:
+- Linux: `~/.local/share/netatmo-truetemp/`
+- macOS: `~/Library/Application Support/netatmo-truetemp/`
+- Windows: `%LOCALAPPDATA%\netatmo-truetemp\`
+
+To report security vulnerabilities, see [SECURITY.md](SECURITY.md).
 
 ## Development
 
@@ -128,12 +178,19 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## Links
+## Support
 
-- [GitHub Repository](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli)
+Having issues or want to contribute?
+
+- **Bug Reports**: [Create an issue](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=bug_report.md)
+- **Feature Requests**: [Request a feature](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=feature_request.md)
+- **Discussions**: [Join the conversation](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/discussions)
+- **Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md)
+- **Security Issues**: See [SECURITY.md](SECURITY.md)
+
+**Related Projects**:
+- [py-netatmo-truetemp](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp) - The underlying Python library
 - [PyPI Package](https://pypi.org/project/py-netatmo-truetemp-cli/)
-- [Issue Tracker](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues)
-- [py-netatmo-truetemp Library](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp)
 
 ## Acknowledgments
 
