@@ -225,6 +225,3 @@ docs/plans/
 
 # macOS
 .DS_Store
-
-# uv lock file (CLI application)
-uv.lock
