@@ -1,6 +1,6 @@
 """Tests for display functions."""
 
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from py_netatmo_cli.display import (
     display_error_panel,

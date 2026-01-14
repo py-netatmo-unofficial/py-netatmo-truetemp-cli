@@ -1,7 +1,6 @@
 """Tests for helper functions."""
 
-import os
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 import typer
@@ -10,7 +9,6 @@ from py_netatmo_truetemp.exceptions import RoomNotFoundError
 from py_netatmo_cli.helpers import (
     NetatmoConfig,
     create_netatmo_api_with_spinner,
-    handle_api_errors,
     resolve_room_id,
     validate_room_input,
 )
