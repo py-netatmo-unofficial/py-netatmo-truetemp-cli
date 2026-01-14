@@ -22,22 +22,6 @@ updates:
           - "bandit*"
           - "pylint*"
           - "twine*"
-
-  # Examples dependencies
-  - package-ecosystem: "uv"
-    directory: "/examples"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "examples"
-      - "automated"
-    open-pull-requests-limit: 5
-    groups:
       cli-dependencies:
         patterns:
           - "typer*"

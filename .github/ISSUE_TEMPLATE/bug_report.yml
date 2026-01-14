@@ -31,14 +31,16 @@ body:
   - type: textarea
     id: code-sample
     attributes:
-      label: Code Sample
-      description: If applicable, provide a minimal code sample that demonstrates the issue.
-      render: python
+      label: Command Used
+      description: If applicable, provide the exact command that demonstrates the issue.
+      render: shell
       placeholder: |
-        from py_netatmo_truetemp import NetatmoAPI
+        # Set environment variables
+        export NETATMO_USERNAME="..."
+        export NETATMO_PASSWORD="..."
 
-        api = NetatmoAPI(username="...", password="...")
-        # Your code here
+        # Run the command
+        netatmo-truetemp list-rooms
 
   - type: textarea
     id: error-message
@@ -54,9 +56,9 @@ body:
   - type: input
     id: version
     attributes:
-      label: Library Version
-      description: Which version of py-netatmo-truetemp are you using?
-      placeholder: "0.1.0"
+      label: CLI Version
+      description: Which version of py-netatmo-truetemp-cli are you using?
+      placeholder: "1.0.0"
     validations:
       required: true
 
