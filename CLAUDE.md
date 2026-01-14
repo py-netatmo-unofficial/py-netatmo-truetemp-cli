@@ -19,7 +19,7 @@ This file provides comprehensive guidance for developing and maintaining the py-
 ```
 py-netatmo-truetemp-cli/
 ├── src/
-│   └── netatmo_truetemp_cli/
+│   └── py_netatmo_truetemp_cli/
 │       ├── __init__.py          # Package initialization, version export
 │       ├── cli.py               # Typer app, command definitions
 │       ├── display.py           # Rich formatting (tables, panels)
@@ -60,7 +60,7 @@ py-netatmo-truetemp-cli/
 
 ### Module Responsibilities
 
-#### `src/netatmo_truetemp_cli/cli.py`
+#### `src/py_netatmo_truetemp_cli/cli.py`
 
 **Purpose**: Command-line interface entry point and command definitions.
 
@@ -76,7 +76,7 @@ py-netatmo-truetemp-cli/
 
 **Design Pattern**: Command pattern with dependency injection via helpers module.
 
-#### `src/netatmo_truetemp_cli/helpers.py`
+#### `src/py_netatmo_truetemp_cli/helpers.py`
 
 **Purpose**: Business logic, API initialization, and error handling.
 
@@ -96,7 +96,7 @@ py-netatmo-truetemp-cli/
 
 **Design Pattern**: Factory pattern for API initialization, decorator pattern for error handling.
 
-#### `src/netatmo_truetemp_cli/display.py`
+#### `src/py_netatmo_truetemp_cli/display.py`
 
 **Purpose**: Terminal UI presentation layer using Rich library.
 
@@ -199,7 +199,7 @@ def test_resolve_room_id_case_insensitive(mock_api):
 uv run pytest
 
 # Run with coverage
-uv run pytest --cov=netatmo_truetemp_cli --cov-report=html
+uv run pytest --cov=py_netatmo_truetemp_cli --cov-report=html
 
 # Run specific test file
 uv run pytest tests/test_helpers.py
@@ -293,7 +293,7 @@ uv run pre-commit run ruff --all-files
 - **PATCH**: Bug fixes, documentation updates
 
 **Version Locations**:
-- `src/netatmo_truetemp_cli/__init__.py` - `__version__` variable
+- `src/py_netatmo_truetemp_cli/__init__.py` - `__version__` variable
 - `pyproject.toml` - `project.version` field
 
 ### Release Process
@@ -310,7 +310,7 @@ uv run pre-commit run ruff --all-files
 
 ```bash
 # 1. Update version in both locations
-# Edit src/netatmo_truetemp_cli/__init__.py
+# Edit src/py_netatmo_truetemp_cli/__init__.py
 __version__ = "1.2.3"
 
 # Edit pyproject.toml
@@ -320,7 +320,7 @@ version = "1.2.3"
 # Add new section under "## [Unreleased]"
 
 # 3. Commit changes
-git add src/netatmo_truetemp_cli/__init__.py pyproject.toml CHANGELOG.md
+git add src/py_netatmo_truetemp_cli/__init__.py pyproject.toml CHANGELOG.md
 git commit -m "chore: bump version to 1.2.3"
 
 # 4. Create and push tag
@@ -452,7 +452,7 @@ uv run pip-audit
 
 #### Import Errors
 
-**Symptoms**: `ModuleNotFoundError: No module named 'netatmo_truetemp_cli'`
+**Symptoms**: `ModuleNotFoundError: No module named 'py_netatmo_truetemp_cli'`
 
 **Diagnosis**:
 1. Verify virtual environment is activated: `which python`

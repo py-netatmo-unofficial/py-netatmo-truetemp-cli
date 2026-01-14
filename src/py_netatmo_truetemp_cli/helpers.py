@@ -66,47 +66,47 @@ def create_netatmo_api_with_spinner() -> NetatmoAPI:
     return api
 
 
-def handle_api_errors(func):
+def handle_api_errors(func):  # type: ignore[no-untyped-def]
     """Decorator for consistent error handling across CLI commands."""
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs):  # type: ignore[no-untyped-def]
         try:
             return func(*args, **kwargs)
         except typer.Exit:
             raise
         except ValueError as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Configuration Error", str(e))
             raise typer.Exit(code=1)
         except ValidationError as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Validation Error", str(e))
             raise typer.Exit(code=1)
         except AuthenticationError as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Authentication Failed", f"{e}\n\nCheck your credentials")
             raise typer.Exit(code=1)
         except (HomeNotFoundError, RoomNotFoundError) as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Not Found", str(e))
             raise typer.Exit(code=1)
         except ApiError as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("API Error", str(e))
             raise typer.Exit(code=1)
         except NetatmoError as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Netatmo Error", str(e))
             raise typer.Exit(code=1)
         except Exception as e:
-            from py_netatmo_cli.display import display_error_panel
+            from py_netatmo_truetemp_cli.display import display_error_panel
 
             display_error_panel("Unexpected Error", str(e))
             raise typer.Exit(code=1)
@@ -148,9 +148,9 @@ def resolve_room_id(
 
     room = next((r for r in rooms if r["id"] == room_id), None)
     if not room:
-        raise RoomNotFoundError(room_id)
+        raise RoomNotFoundError(room_id or "unknown")
 
-    return room_id, room["name"]
+    return room_id or "unknown", room["name"]
 
 
 def validate_room_input(room_id: str | None, room_name: str | None) -> None:

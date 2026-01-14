@@ -6,7 +6,7 @@ import pytest
 import typer
 from py_netatmo_truetemp.exceptions import RoomNotFoundError
 
-from py_netatmo_cli.helpers import (
+from py_netatmo_truetemp_cli.helpers import (
     NetatmoConfig,
     create_netatmo_api_with_spinner,
     resolve_room_id,
@@ -57,7 +57,7 @@ class TestNetatmoConfig:
 class TestCreateNetatmoApiWithSpinner:
     """Tests for create_netatmo_api_with_spinner function."""
 
-    @patch("py_netatmo_cli.helpers.NetatmoAPI")
+    @patch("py_netatmo_truetemp_cli.helpers.NetatmoAPI")
     def test_creates_api_with_config(self, mock_api_class, mock_env_vars):
         """Test API creation with valid configuration."""
         create_netatmo_api_with_spinner()
@@ -66,7 +66,7 @@ class TestCreateNetatmoApiWithSpinner:
             username="test@example.com", password="test-password", home_id="test-home-id"
         )
 
-    @patch("py_netatmo_cli.helpers.NetatmoAPI")
+    @patch("py_netatmo_truetemp_cli.helpers.NetatmoAPI")
     def test_creates_api_without_home_id(self, mock_api_class, monkeypatch):
         """Test API creation without home_id."""
         monkeypatch.setenv("NETATMO_USERNAME", "test@example.com")

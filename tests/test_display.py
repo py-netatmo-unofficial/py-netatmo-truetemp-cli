@@ -2,7 +2,7 @@
 
 from unittest.mock import patch
 
-from py_netatmo_cli.display import (
+from py_netatmo_truetemp_cli.display import (
     display_error_panel,
     display_rooms_table,
     display_temperature_result,
@@ -12,7 +12,7 @@ from py_netatmo_cli.display import (
 class TestDisplayRoomsTable:
     """Tests for display_rooms_table function."""
 
-    @patch("py_netatmo_cli.display.console")
+    @patch("py_netatmo_truetemp_cli.display.console")
     def test_display_empty_rooms(self, mock_console):
         """Test display with empty rooms list."""
         display_rooms_table([])
@@ -21,7 +21,7 @@ class TestDisplayRoomsTable:
         call_args = str(mock_console.print.call_args)
         assert "No rooms with thermostats found" in call_args
 
-    @patch("py_netatmo_cli.display.console")
+    @patch("py_netatmo_truetemp_cli.display.console")
     def test_display_multiple_rooms(self, mock_console):
         """Test display with multiple rooms."""
         rooms = [
@@ -40,7 +40,7 @@ class TestDisplayRoomsTable:
 class TestDisplayTemperatureResult:
     """Tests for display_temperature_result function."""
 
-    @patch("py_netatmo_cli.display.console")
+    @patch("py_netatmo_truetemp_cli.display.console")
     def test_display_success_message(self, mock_console):
         """Test success message display."""
         display_temperature_result("Living Room", 20.5)
@@ -54,7 +54,7 @@ class TestDisplayTemperatureResult:
 class TestDisplayErrorPanel:
     """Tests for display_error_panel function."""
 
-    @patch("py_netatmo_cli.display.error_console")
+    @patch("py_netatmo_truetemp_cli.display.error_console")
     def test_display_error(self, mock_error_console):
         """Test error panel display."""
         display_error_panel("Test Error", "This is a test error message")

@@ -45,7 +45,7 @@ dependencies = [
 ]
 
 [project.scripts]
-netatmo-truetemp = "py_netatmo_cli.cli:app"
+netatmo-truetemp = "py_netatmo_truetemp_cli.cli:app"
 
 [project.urls]
 Homepage = "https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli"
@@ -67,19 +67,19 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/py_netatmo_cli"]
+packages = ["src/py_netatmo_truetemp_cli"]
 
 [tool.hatch.version]
 source = "vcs"
 fallback-version = "0.0.0"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/py_netatmo_cli/_version.py"
+version-file = "src/py_netatmo_truetemp_cli/_version.py"
 
 [tool.ruff]
 line-length = 100
 target-version = "py313"
-extend-exclude = ["src/py_netatmo_cli/_version.py"]
+extend-exclude = ["src/py_netatmo_truetemp_cli/_version.py"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
@@ -112,7 +112,7 @@ skips = ["B101"]
 
 [tool.coverage.run]
 source = ["src"]
-omit = ["src/py_netatmo_cli/_version.py"]
+omit = ["src/py_netatmo_truetemp_cli/_version.py"]
 
 [tool.coverage.report]
 exclude_lines = [

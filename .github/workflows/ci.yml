@@ -47,10 +47,10 @@ jobs:
         run: uv run ruff check src/ tests/
 
       - name: Run mypy type checking
-        run: uv run mypy src/py_netatmo_cli/
+        run: uv run mypy src/py_netatmo_truetemp_cli/
 
       - name: Validate package imports
-        run: uv run python -c "from py_netatmo_cli import __version__; print('✓ Imports validated')"
+        run: uv run python -c "from py_netatmo_truetemp_cli import __version__; print('✓ Imports validated')"
 
   cli-test:
     name: CLI Tests - Python 3.13 on ${{ matrix.os }}
@@ -78,7 +78,7 @@ jobs:
         run: uv sync --frozen
 
       - name: Run CLI tests with coverage
-        run: uv run pytest tests/ -v --cov=src/py_netatmo_cli --cov-report=term-missing --cov-report=xml
+        run: uv run pytest tests/ -v --cov=src/py_netatmo_truetemp_cli --cov-report=term-missing --cov-report=xml
 
       - name: Upload coverage to Codecov
         if: matrix.os == 'ubuntu-latest'
@@ -112,7 +112,7 @@ jobs:
         run: uv sync --frozen
 
       - name: Run bandit security scan
-        run: uv run bandit -r src/py_netatmo_cli/ -ll -f json -o bandit-report.json
+        run: uv run bandit -r src/py_netatmo_truetemp_cli/ -ll -f json -o bandit-report.json
 
       - name: Upload bandit report
         if: always()
@@ -151,7 +151,7 @@ jobs:
         run: |
           uv venv test-env
           uv pip install --python test-env dist/*.whl
-          uv run --python test-env python -c "from py_netatmo_cli import __version__; print('✓ Package installed successfully')"
+          uv run --python test-env python -c "from py_netatmo_truetemp_cli import __version__; print('✓ Package installed successfully')"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6

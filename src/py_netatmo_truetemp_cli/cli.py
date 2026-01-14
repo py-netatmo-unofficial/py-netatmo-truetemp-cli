@@ -4,11 +4,11 @@ from typing import Annotated
 
 import typer
 
-from py_netatmo_cli.display import (
+from py_netatmo_truetemp_cli.display import (
     display_rooms_table,
     display_temperature_result,
 )
-from py_netatmo_cli.helpers import (
+from py_netatmo_truetemp_cli.helpers import (
     create_netatmo_api_with_spinner,
     handle_api_errors,
     resolve_room_id,
