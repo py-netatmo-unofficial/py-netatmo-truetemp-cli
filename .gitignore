@@ -205,3 +205,20 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Python package specific
+# Generated version file (hatch-vcs)
+src/py_netatmo_cli/_version.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# uv lock file (CLI application)
+uv.lock
