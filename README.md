@@ -2,9 +2,13 @@
 
 [![PyPI version](https://badge.fury.io/py/py-netatmo-truetemp-cli.svg)](https://pypi.org/project/py-netatmo-truetemp-cli/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/py-netatmo-truetemp-cli)](https://pypi.org/project/py-netatmo-truetemp-cli/)
+[![CI](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/actions/workflows/ci.yml)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/py-netatmo-unofficial/py-netatmo-truetemp-cli/graph/badge.svg)](https://codecov.io/gh/py-netatmo-unofficial/py-netatmo-truetemp-cli)
 [![Code style: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](https://mypy-lang.org/)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 
 **Netatmo's missing true temperature CLI** - set real room temps from your terminal with a simple, intuitive command-line interface.
 
