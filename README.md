@@ -1,12 +1,12 @@
 # py-netatmo-truetemp-cli
 
-**Netatmo's missing true temperature CLI** - set real room temps from your terminal with a simple, intuitive command-line interface.
-
 [![PyPI version](https://badge.fury.io/py/py-netatmo-truetemp-cli.svg)](https://pypi.org/project/py-netatmo-truetemp-cli/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/py-netatmo-truetemp-cli)](https://pypi.org/project/py-netatmo-truetemp-cli/)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+**Netatmo's missing true temperature CLI** - set real room temps from your terminal with a simple, intuitive command-line interface.
 
 ## ⚠️ Disclaimer
 
@@ -176,18 +176,32 @@ uv run mypy src/
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- Code of conduct
+- Development setup
+- Running tests
+- Code style guidelines
+- Conventional commit message format (required)
+- Submitting pull requests
+
+All commits must follow the [Conventional Commits](https://www.conventionalcommits.org/) format. Pre-commit hooks will validate your commit messages automatically.
+
+See also:
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+- [Changelog](CHANGELOG.md)
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
 Having issues or want to contribute?
 
-- **Bug Reports**: [Create an issue](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=bug_report.md)
-- **Feature Requests**: [Request a feature](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=feature_request.md)
+- **Bug Reports**: [Create an issue](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=bug_report.yml)
+- **Feature Requests**: [Request a feature](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=feature_request.yml)
 - **Discussions**: [Join the conversation](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/discussions)
 - **Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md)
 - **Security Issues**: See [SECURITY.md](SECURITY.md)
