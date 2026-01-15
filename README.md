@@ -10,13 +10,15 @@
 
 ## ⚠️ Disclaimer
 
-This is an **unofficial** CLI tool for Netatmo thermostats. It is:
-- **Not affiliated with or endorsed by Netatmo**
-- **Not officially supported** - use at your own risk
-- **For personal/educational use** - production use not recommended
-- **Subject to archival** - may become unmaintained if I lose access to Netatmo hardware
+**Unofficial Project**: This is an independent, community-developed CLI tool and is **not affiliated with, endorsed by, or supported by Netatmo or Legrand**.
 
-**Use responsibly**: This tool controls heating equipment. Test thoroughly before relying on it.
+**Why This Exists**: The official Netatmo OAuth API does not currently support programmatic temperature adjustments via the `truetemperature` endpoint. This CLI tool provides a simple interface to the [py-netatmo-truetemp](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp) library.
+
+**Archival Policy**: This repository will be archived or removed if:
+- Netatmo officially adds temperature control support to their OAuth API
+- Netatmo requests takedown of this project
+
+**Use at Your Own Risk**: This tool relies on undocumented endpoints that may change without notice. It controls heating equipment - test thoroughly before relying on it in production.
 
 ## Features
 
