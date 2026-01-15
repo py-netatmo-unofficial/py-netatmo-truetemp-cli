@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "py-netatmo-truetemp-cli"
 dynamic = ["version"]
-description = "Command-line tool for Netatmo thermostat control with TrueTemperature - set accurate room temperatures from your terminal"
+description = "Netatmo's missing true temperature CLI - set real room temps from your terminal"
 readme = "README.md"
 requires-python = ">=3.13"
 license = {text = "MIT"}
@@ -16,13 +16,17 @@ maintainers = [
     {name = "P4uLT", email = "P4uLT@users.noreply.github.com"},
 ]
 keywords = [
+    "truetemp",
+    "true-temperature",
+    "temperature-control",
     "netatmo",
-    "cli",
     "thermostat",
     "smart-home",
-    "iot",
     "home-automation",
-    "temperature-control",
+    "command-line",
+    "cli-tool",
+    "terminal",
+    "automation",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",

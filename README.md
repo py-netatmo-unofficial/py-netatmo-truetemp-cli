@@ -1,22 +1,28 @@
 # py-netatmo-truetemp-cli
 
-Official CLI tool for [py-netatmo-truetemp](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp) - control your Netatmo thermostats from the command line.
-
 [![PyPI version](https://badge.fury.io/py/py-netatmo-truetemp-cli.svg)](https://pypi.org/project/py-netatmo-truetemp-cli/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/py-netatmo-truetemp-cli)](https://pypi.org/project/py-netatmo-truetemp-cli/)
+[![CI](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/actions/workflows/ci.yml)
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/py-netatmo-unofficial/py-netatmo-truetemp-cli/graph/badge.svg)](https://codecov.io/gh/py-netatmo-unofficial/py-netatmo-truetemp-cli)
 [![Code style: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](https://mypy-lang.org/)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
+**Netatmo's missing true temperature CLI** - set real room temps from your terminal with a simple, intuitive command-line interface.
 
 ## ⚠️ Disclaimer
 
-This is an **unofficial** CLI tool for Netatmo thermostats. It is:
-- **Not affiliated with or endorsed by Netatmo**
-- **Not officially supported** - use at your own risk
-- **For personal/educational use** - production use not recommended
-- **Subject to archival** - may become unmaintained if I lose access to Netatmo hardware
+**Unofficial Project**: This is an independent, community-developed CLI tool and is **not affiliated with, endorsed by, or supported by Netatmo or Legrand**.
 
-**Use responsibly**: This tool controls heating equipment. Test thoroughly before relying on it.
+**Why This Exists**: The official Netatmo OAuth API does not currently support programmatic temperature adjustments via the `truetemperature` endpoint. This CLI tool provides a simple interface to the [py-netatmo-truetemp](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp) library.
+
+**Archival Policy**: This repository will be archived or removed if:
+- Netatmo officially adds temperature control support to their OAuth API
+- Netatmo requests takedown of this project
+
+**Use at Your Own Risk**: This tool relies on undocumented endpoints that may change without notice. It controls heating equipment - test thoroughly before relying on it in production.
 
 ## Features
 
@@ -174,18 +180,32 @@ uv run mypy src/
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- Code of conduct
+- Development setup
+- Running tests
+- Code style guidelines
+- Conventional commit message format (required)
+- Submitting pull requests
+
+All commits must follow the [Conventional Commits](https://www.conventionalcommits.org/) format. Pre-commit hooks will validate your commit messages automatically.
+
+See also:
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+- [Changelog](CHANGELOG.md)
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
 Having issues or want to contribute?
 
-- **Bug Reports**: [Create an issue](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=bug_report.md)
-- **Feature Requests**: [Request a feature](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=feature_request.md)
+- **Bug Reports**: [Create an issue](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=bug_report.yml)
+- **Feature Requests**: [Request a feature](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/issues/new?template=feature_request.yml)
 - **Discussions**: [Join the conversation](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/discussions)
 - **Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md)
 - **Security Issues**: See [SECURITY.md](SECURITY.md)
