@@ -1,6 +1,6 @@
 # py-netatmo-truetemp-cli
 
-Official CLI tool for [py-netatmo-truetemp](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp) - control your Netatmo thermostats from the command line.
+**Netatmo's missing true temperature CLI** - set real room temps from your terminal with a simple, intuitive command-line interface.
 
 [![PyPI version](https://badge.fury.io/py/py-netatmo-truetemp-cli.svg)](https://pypi.org/project/py-netatmo-truetemp-cli/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/py-netatmo-truetemp-cli)](https://pypi.org/project/py-netatmo-truetemp-cli/)
