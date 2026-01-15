@@ -85,8 +85,8 @@ N/A
 ---
 
 **Pre-submission Checklist**:
-- [ ] I have read the [CONTRIBUTING.md](https://github.com/P4uLT/py-netatmo-truetemp/blob/main/CONTRIBUTING.md) guide
-- [ ] My code follows the SOLID principles used in this project
+- [ ] I have read the [CONTRIBUTING.md](https://github.com/py-netatmo-unofficial/py-netatmo-truetemp-cli/blob/main/CONTRIBUTING.md) guide
+- [ ] My code follows the project's style guidelines
 - [ ] I have performed a self-review of my code
 - [ ] All CI checks pass locally
 - [ ] I have updated the documentation accordingly

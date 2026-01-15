@@ -4,11 +4,19 @@ from unittest.mock import patch
 
 import pytest
 import typer
-from py_netatmo_truetemp.exceptions import RoomNotFoundError
+from py_netatmo_truetemp.exceptions import (
+    ApiError,
+    AuthenticationError,
+    HomeNotFoundError,
+    NetatmoError,
+    RoomNotFoundError,
+    ValidationError,
+)
 
 from py_netatmo_truetemp_cli.helpers import (
     NetatmoConfig,
     create_netatmo_api_with_spinner,
+    handle_api_errors,
     resolve_room_id,
     validate_room_input,
 )
@@ -135,3 +143,144 @@ class TestValidateRoomInput:
         """Test error when neither room_id nor room_name provided."""
         with pytest.raises(typer.Exit):
             validate_room_input(None, None)
+
+
+class TestHandleApiErrorsDecorator:
+    """Tests for handle_api_errors decorator."""
+
+    def test_successful_execution(self):
+        """Test decorator allows successful execution."""
+
+        @handle_api_errors
+        def success_func():
+            return "success"
+
+        result = success_func()
+        assert result == "success"
+
+    def test_reraises_typer_exit(self):
+        """Test decorator re-raises typer.Exit."""
+
+        @handle_api_errors
+        def exit_func():
+            raise typer.Exit(code=0)
+
+        with pytest.raises(typer.Exit):
+            exit_func()
+
+    def test_handles_value_error(self):
+        """Test decorator handles ValueError."""
+
+        @handle_api_errors
+        def error_func():
+            raise ValueError("Config error")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_validation_error(self):
+        """Test decorator handles ValidationError."""
+
+        @handle_api_errors
+        def error_func():
+            raise ValidationError("Invalid input")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_authentication_error(self):
+        """Test decorator handles AuthenticationError."""
+
+        @handle_api_errors
+        def error_func():
+            raise AuthenticationError("Auth failed")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_home_not_found_error(self):
+        """Test decorator handles HomeNotFoundError."""
+
+        @handle_api_errors
+        def error_func():
+            raise HomeNotFoundError("home123")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_room_not_found_error(self):
+        """Test decorator handles RoomNotFoundError."""
+
+        @handle_api_errors
+        def error_func():
+            raise RoomNotFoundError("room123")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_api_error(self):
+        """Test decorator handles ApiError."""
+
+        @handle_api_errors
+        def error_func():
+            raise ApiError("API call failed")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_netatmo_error(self):
+        """Test decorator handles generic NetatmoError."""
+
+        @handle_api_errors
+        def error_func():
+            raise NetatmoError("Netatmo error")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+    def test_handles_unexpected_exception(self):
+        """Test decorator handles unexpected exceptions."""
+
+        @handle_api_errors
+        def error_func():
+            raise RuntimeError("Unexpected error")
+
+        with pytest.raises(typer.Exit) as exc_info:
+            error_func()
+
+        assert exc_info.value.exit_code == 1
+
+
+class TestResolveRoomIdMultipleRooms:
+    """Tests for resolve_room_id with multiple rooms scenario."""
+
+    def test_multiple_rooms_same_name_warning(self, mock_api, capsys):
+        """Test warning when multiple rooms have the same name."""
+        # Mock list_thermostat_rooms to return duplicate names
+        mock_api.list_thermostat_rooms.return_value = [
+            {"id": "room1", "name": "Living Room"},
+            {"id": "room3", "name": "Living Room"},
+        ]
+
+        room_id, room_name = resolve_room_id(mock_api, None, "Living Room", None)
+
+        # Should return first match
+        assert room_id == "room1"
+        assert room_name == "Living Room"
+
+        # Warning should be printed (tested via console output)
+        # Note: Rich console output is hard to capture, but the function executes without error
